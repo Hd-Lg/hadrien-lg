@@ -1,5 +1,5 @@
 .navbar {
-  --bg: #e3e3e3;
+  --bg: #f5f5f5;
   --primary: #f5771b;
   --secondary: #222222;
 
@@ -11,7 +11,7 @@
   top: 0;
   width: 100vw;
   height: 10vh;
-  /* background: var(--bg); */
+  background: var(--bg);
 }
 
 .links {

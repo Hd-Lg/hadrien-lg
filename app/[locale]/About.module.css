@@ -1,0 +1,22 @@
+.aboutSection {
+  width: 90vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.img {
+  width: 400px;
+  height: 400px;
+}
+
+.aboutText {
+  max-width: 50%;
+}
+
+.title {
+  font-size: 80px;
+}

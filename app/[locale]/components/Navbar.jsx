@@ -2,9 +2,7 @@
 import { useEffect, useRef } from 'react';
 import styles from './Navbar.module.css';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import Link from 'next-intl/link';
 
 const Navbar = () => {
   const homeRef = useRef();
@@ -45,18 +43,23 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.links}>
-        <a ref={homeRef} id='text' href='#' className={styles.linkHome}>
+        <Link ref={homeRef} id='text' href='#' className={styles.linkHome}>
           Home
-        </a>
-        <a ref={aboutRef} id='text' href='#' className={styles.linkAbout}>
+        </Link>
+        <Link ref={aboutRef} id='text' href='#' className={styles.linkAbout}>
           About
-        </a>
-        <a ref={skillsRef} id='text' href='#' className={styles.linkSkills}>
+        </Link>
+        <Link ref={skillsRef} id='text' href='#' className={styles.linkSkills}>
           Skills
-        </a>
-        <a ref={contactRef} id='text' href='#' className={styles.linkContact}>
+        </Link>
+        <Link
+          ref={contactRef}
+          id='text'
+          href='#'
+          className={styles.linkContact}
+        >
           Contact
-        </a>
+        </Link>
       </div>
     </nav>
   );

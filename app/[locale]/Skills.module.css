@@ -1,0 +1,20 @@
+.container {
+  width: 90vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card {
+  max-width: 700px;
+  display: flex;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.title {
+  font-size: 20px;
+}

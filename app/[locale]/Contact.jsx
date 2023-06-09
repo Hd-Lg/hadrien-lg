@@ -1,7 +1,11 @@
-import React from 'react';
+import styles from './About.module.css';
 
 const Contact = () => {
-  return <section>Contact</section>;
+  return (
+    <section className={styles.container}>
+      <h2>Contact</h2>
+    </section>
+  );
 };
 
 export default Contact;
