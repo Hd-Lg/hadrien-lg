@@ -2,7 +2,7 @@ import styles from './Projects.module.css';
 
 const Projects = () => {
   return (
-    <section className={styles.container}>
+    <section id='projects' className={styles.container}>
       <div>
         <h2>Projects</h2>
         <p>

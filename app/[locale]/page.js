@@ -12,7 +12,6 @@ export default function Home() {
   return (
     <main className={styles.wrapper}>
       <h2>{t('title')}</h2>
-
       <Experience />
       <About />
       <Skills />

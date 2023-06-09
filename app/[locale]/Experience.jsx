@@ -3,9 +3,9 @@ import Office from './components/Office';
 
 const Experience = () => {
   return (
-    <div className={styles.wrapper}>
+    <section id='home' className={styles.wrapper}>
       <Office />
-    </div>
+    </section>
   );
 };
 

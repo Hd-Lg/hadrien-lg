@@ -23,7 +23,7 @@ const Skills = () => {
   }, []);
 
   return (
-    <section ref={contentRef} className={styles.container}>
+    <section id='skills' ref={contentRef} className={styles.container}>
       <div ref={firstCardRef} className={styles.card}>
         <h3 className={styles.title}>Web Development`</h3>
         <div className={styles.text}>
