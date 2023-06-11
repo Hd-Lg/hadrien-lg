@@ -1,11 +1,11 @@
-import About from './About';
-import Experience from './Experience';
-import Contact from './Contact';
-import Skills from './Skills';
+import About from './sections/About';
+import Experience from './sections/Experience';
+import Contact from './sections/Contact';
+import Skills from './sections/Skills';
 import styles from './page.module.css';
 
 import { useTranslations } from 'next-intl';
-import Projects from './Projects';
+import Projects from './sections/Projects';
 
 export default function Home() {
   const t = useTranslations('Homepage');

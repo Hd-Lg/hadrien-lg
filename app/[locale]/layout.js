@@ -3,6 +3,8 @@ import Navbar from './components/Navbar';
 
 import { useLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
+import Loading from './loading';
 
 export const metadata = {
   title: 'Hadrien Lg',
@@ -20,8 +22,10 @@ export default function RootLayout({ children, params }) {
   return (
     <html lang={locale}>
       <body style={{ position: 'relative' }}>
-        <Navbar />
-        {children}
+        <Suspense fallback={<Loading />}>
+          <Navbar />
+          {children}
+        </Suspense>
       </body>
     </html>
   );

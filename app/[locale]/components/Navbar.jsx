@@ -4,15 +4,19 @@ import NavbarLink from './NavbarLink';
 
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import Link from 'next-intl/link';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Navbar = () => {
-  const homeRef = useRef();
-  const aboutRef = useRef();
-  const skillsRef = useRef();
-  const projectsRef = useRef();
-  const contactRef = useRef();
+  const navbarRef = useRef(null);
+
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const skillsRef = useRef(null);
+  const projectsRef = useRef(null);
+  const contactRef = useRef(null);
 
   const handleLinkClick = ({ link }) => {
     scroll.scrollTo(link, {
@@ -21,6 +25,10 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    /**
+     * GSAP ANIMATIONS
+     */
+    // LINKS
     gsap.to(homeRef.current, {
       x: -200,
       opacity: 1,
@@ -50,17 +58,35 @@ const Navbar = () => {
       opacity: 1,
       duration: 2,
     });
+
+    // NAVBAR
+    const navbarHeight = navbarRef.current.offsetHeight;
+
+    gsap.to(navbarRef.current, {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      zIndex: 999,
+      scrollTrigger: {
+        trigger: navbarRef.current,
+        start: 'top top',
+        end: `+=${navbarHeight}`,
+        pin: true,
+        pinSpacing: false,
+      },
+    });
   }, []);
   return (
-    <nav className={styles.navbar}>
+    <nav ref={navbarRef} className={styles.navbar}>
       <div className={styles.links}>
-        <Link ref={homeRef} href='#home' passHref className={styles.linkHome}>
+        <div ref={homeRef} className={styles.linkHome}>
           <ScrollLink to='home' smooth={true} onClick={handleLinkClick('home')}>
             <NavbarLink text={'Home'} />
           </ScrollLink>
-        </Link>
+        </div>
 
-        <Link ref={aboutRef} href='#about' className={styles.linkAbout}>
+        <div ref={aboutRef} className={styles.linkAbout}>
           <ScrollLink
             to='about'
             smooth={true}
@@ -68,9 +94,9 @@ const Navbar = () => {
           >
             <NavbarLink text={'About'} />
           </ScrollLink>
-        </Link>
+        </div>
 
-        <Link ref={skillsRef} href='#skills' className={styles.linkSkills}>
+        <div ref={skillsRef} className={styles.linkSkills}>
           <ScrollLink
             to='skills'
             smooth={true}
@@ -78,9 +104,9 @@ const Navbar = () => {
           >
             <NavbarLink text={'Skills'} />
           </ScrollLink>
-        </Link>
+        </div>
 
-        <Link ref={projectsRef} href='#projects' className={styles.linkSkills}>
+        <div ref={projectsRef} className={styles.linkSkills}>
           <ScrollLink
             to='projects'
             smooth={true}
@@ -88,9 +114,9 @@ const Navbar = () => {
           >
             <NavbarLink text={'Projects'} />
           </ScrollLink>
-        </Link>
+        </div>
 
-        <Link ref={contactRef} href='#contact' className={styles.linkContact}>
+        <div ref={contactRef} className={styles.linkContact}>
           <ScrollLink
             to='contact'
             smooth={true}
@@ -98,7 +124,7 @@ const Navbar = () => {
           >
             <NavbarLink text={'Contact'} />
           </ScrollLink>
-        </Link>
+        </div>
       </div>
     </nav>
   );

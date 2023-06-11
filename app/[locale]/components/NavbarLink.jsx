@@ -21,7 +21,7 @@ const TitleWithRedLine = ({ text }) => {
       onMouseLeave={() => setIsHovered(false)}
       className={styles.container}
     >
-      <a>{text}</a>
+      <span>{text}</span>
       <div>
         <div style={spreadLineStyle}></div>
       </div>

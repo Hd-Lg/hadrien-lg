@@ -1,5 +1,5 @@
 import styles from './Experience.module.css';
-import Office from './components/Office';
+import Office from '../components/Office';
 
 const Experience = () => {
   return (
