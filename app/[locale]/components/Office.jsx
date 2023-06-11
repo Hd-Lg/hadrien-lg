@@ -7,7 +7,7 @@ import { Suspense } from 'react';
 
 const Office = () => {
   return (
-    <Canvas camera={{ position: [0, 2, 12] }} style={{ cursor: 'pointer' }}>
+    <Canvas camera={{ position: [-2, 5, 11] }} style={{ cursor: 'pointer' }}>
       <color attach='background' args={['#f5f5f5']} />
       <OrbitControls
         enableZoom={false}

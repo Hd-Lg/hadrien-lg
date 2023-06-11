@@ -2,7 +2,7 @@
 import styles from './Navbar.module.css';
 import NavbarLink from './NavbarLink';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
@@ -11,17 +11,21 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Navbar = () => {
   const navbarRef = useRef(null);
-
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const skillsRef = useRef(null);
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
 
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
+
   const handleLinkClick = ({ link }) => {
-    scroll.scrollTo(link, {
-      smooth: true,
-    });
+    setTimeout(() => {}, 2000);
+    if (typeof window !== 'undefined') {
+      scroll.scrollTo(link, {
+        smooth: true,
+      });
+    }
   };
 
   useEffect(() => {
@@ -60,7 +64,7 @@ const Navbar = () => {
     });
 
     // NAVBAR
-    const navbarHeight = navbarRef.current.offsetHeight;
+    const navbarHeight = navbarRef?.current.offsetHeight;
 
     gsap.to(navbarRef.current, {
       position: 'fixed',
@@ -77,11 +81,16 @@ const Navbar = () => {
       },
     });
   }, []);
+
   return (
     <nav ref={navbarRef} className={styles.navbar}>
       <div className={styles.links}>
         <div ref={homeRef} className={styles.linkHome}>
-          <ScrollLink to='home' smooth={true} onClick={handleLinkClick('home')}>
+          <ScrollLink
+            to='home'
+            smooth={true}
+            onClick={() => handleLinkClick('home')}
+          >
             <NavbarLink text={'Home'} />
           </ScrollLink>
         </div>
@@ -90,7 +99,7 @@ const Navbar = () => {
           <ScrollLink
             to='about'
             smooth={true}
-            onClick={handleLinkClick('about')}
+            onClick={() => handleLinkClick('about')}
           >
             <NavbarLink text={'About'} />
           </ScrollLink>
@@ -100,7 +109,7 @@ const Navbar = () => {
           <ScrollLink
             to='skills'
             smooth={true}
-            onClick={handleLinkClick('skills')}
+            onClick={() => handleLinkClick('skills')}
           >
             <NavbarLink text={'Skills'} />
           </ScrollLink>
@@ -110,7 +119,7 @@ const Navbar = () => {
           <ScrollLink
             to='projects'
             smooth={true}
-            onClick={handleLinkClick('projects')}
+            onClick={() => handleLinkClick('projects')}
           >
             <NavbarLink text={'Projects'} />
           </ScrollLink>
@@ -120,7 +129,7 @@ const Navbar = () => {
           <ScrollLink
             to='contact'
             smooth={true}
-            onClick={handleLinkClick('contact')}
+            onClick={() => handleLinkClick('contact')}
           >
             <NavbarLink text={'Contact'} />
           </ScrollLink>

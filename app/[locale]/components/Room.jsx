@@ -14,7 +14,7 @@ export function Room(props) {
 
   const textureMaterial = new MeshStandardMaterial({ map: texture });
   return (
-    <group name='Scene'>
+    <group name='Scene' rotation={[0, 4, 0]}>
       <mesh
         name='Walls_Floor'
         geometry={nodes.Walls_Floor.geometry}
